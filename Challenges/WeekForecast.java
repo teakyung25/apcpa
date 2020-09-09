@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.Scanner;
+import java.util.stream.IntStream;
+
 
 public class WeekForecast {
     int [] forecast = new int[7];
@@ -18,12 +20,16 @@ public class WeekForecast {
     public void setDayTemp(){
         int index;
         System.out.print("Which day of the week? (1-7 : 1 = Sun | 7 = Sat): ");
-        index = input.nextInt();
+        index = input.nextInt() - 1 ;
         System.out.print(days[index] + ": ");
         forecast[index] = input.nextInt();
     }
 
     public void display(){
-        System.out.println(forecast);
+        System.out.println("Here is your weekly forecast: ");
+        for (int i = 0; i > 7; i++){
+            System.out.println(days[i] + ": " + forecast[i]);
+        }
+        System.out.println("Average Temperature: " + IntStream.of(forecast).sum()/7);
     }
 }
