@@ -1,5 +1,5 @@
 public class Radians {
-    public static void main (String [] args){
+    public static void main (String [] args){        
         Double rad = 30 * Math.PI/180;
         Double sinx = Math.sin(rad);
         Double cosx = Math.cos(rad);   
