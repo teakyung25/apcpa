@@ -30,6 +30,6 @@ public class WeekForecast {
         for (int i = 0; i > 7; i++){
             System.out.println(days[i] + ": " + forecast[i]);
         }
-        System.out.println("Average Temperature: " + IntStream.of(forecast).sum()/7);
+        System.out.println("Average Temperature: " + IntStream.of(forecast).sum()/7.0);
     }
 }
