@@ -4,7 +4,7 @@ public class StandardDeviation {
     public static void main(String [] args){
         Scanner input = new Scanner(System.in);
         System.out.print("How many integers will be added: ");
-        int num = input.nextDouble();
+        double num = input.nextDouble();
         int x = 0;
         double [] nums = new double[num];
         double sum = 0;
