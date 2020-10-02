@@ -12,16 +12,16 @@ public class SnakeEyes {
         double sumScore = 0;
         double theFour = 0;
         for(int i = 0; i < n; i++){
-            boolean isSnakeEye = true;
+            boolean isSnakeEye = false;
             int sum = 0;
             int rolls = 0;
-            while(isSnakeEye) {
+            while(!isSnakeEye) {
                 int r1 = rand.nextInt(6)+1, r2 = rand.nextInt(6)+1;
                 rolls++;
                 if(r1 == 1 && r2 == 1){
-                    isSnakeEye = false;
-                    sumRolls += sum;
-                    sumScore += rolls;
+                    isSnakeEye = true;
+                    sumRolls += rolls;
+                    sumScore += score;
                     if(rolls > 4) theFour++;
                 } else {
                     sum += r1 + r2;
