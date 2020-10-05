@@ -21,7 +21,7 @@ public class SnakeEyes {
                 if(r1 == 1 && r2 == 1){
                     isSnakeEye = true;
                     sumRolls += rolls;
-                    sumScore += score;
+                    sumScore += sum;
                     if(rolls > 4) theFour++;
                 } else {
                     sum += r1 + r2;
@@ -29,10 +29,10 @@ public class SnakeEyes {
             }
         }
 
-        sumRolls /= n;
-        sumScore /= n;
-        theFour /= n;
-        System.out.println("Average Rolls: " + sumRolls + " Average Score: " + sumScore + " Percent Above Four: " + theFour);
+        sumRolls /= (double) n;
+        sumScore /= (double) n;
+        theFour /= (double) n;
+        System.out.println("Average Rolls: " + sumRolls + " Average Score: " + sumScore + " Percent Above Four: " + theFour*100);
     }
   
 }
