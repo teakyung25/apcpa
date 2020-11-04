@@ -27,15 +27,19 @@ public class Color {
     }
 
     public void darkenColor (double percent){
-        setRed(makeValid((int)(rgb[0] - rgb[0]*(percent/100))));
-        setGreen(makeValid((int)(rgb[1] - rgb[1]*(percent/100))));
-        setBlue(makeValid((int)(rgb[2] - rgb[2]*(percent/100))));
+        setRed(makeValid((int)(getPercentage(0,percent))));
+        setGreen(makeValid((int)(getPercentage(1, percent))));
+        setBlue(makeValid((int)(getPercentage(2, percent))));
     }
 
-    public void ligtenColor (double percent){
-        setRed(makeValid((int)(rgb[0] + rgb[0]*(percent/100))));
-        setGreen(makeValid((int)(rgb[1] + rgb[1]*(percent/100))));
-        setBlue(makeValid((int)(rgb[2] + rgb[2]*(percent/100))));
+    public void lightenColor (double percent){
+        setRed(makeValid((int)(getPercentage(0,percent))));
+        setGreen(makeValid((int)(getPercentage(1,percent))));
+        setBlue(makeValid((int)(getPercentage(2, percent))));
+    }
+
+    private double getPercentage(int i, double percent){
+        return (rgb[i] - rgb[i]*(percent/100));
     }
 
     public int [] getSummary () {
