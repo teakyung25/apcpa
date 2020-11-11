@@ -12,6 +12,7 @@ public class Employee {
         this.position = position;
         this.wage = wage;
         this.hoursWorkedPayPeriod = hoursWorkedPayPeriod;
+        this.hoursWorkedSinceHired = hoursWorkedPayPeriod;
         this.id = idIncrement();
     }
 
@@ -24,13 +25,17 @@ public class Employee {
     public Paycheck requestPaycheck() {
         double payAmount = (wage * hoursWorkedPayPeriod) * 0.85; 
         Paycheck pc = new Paycheck(this,payAmount,hoursWorkedPayPeriod,wage);
-        hoursWorkedSinceHired += hoursWorkedPayPeriod;
         hoursWorkedPayPeriod = 0;
         return pc;
     }
 
     public void setPayPeriodHours(int hours){
         hoursWorkedPayPeriod += hours;
+        hoursWorkedSinceHired += hours;
+    }
+
+    public int getPayPeriodHoursWorked() {
+        return hoursWorkedPayPeriod;
     }
 
     public int getTotalHoursWorked() {
