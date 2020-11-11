@@ -12,8 +12,9 @@ public class Paycheck {
         this.wage = wage;
         if(hoursWorked >= 100 || amountPayed > 1500) {
             isErroneous = true;
+        } else {
+            isErroneous = false;
         }
-        isErroneous = false;
     }
 
     public String toString(){
