@@ -3,6 +3,7 @@ public class LunchAccount {
     private double balance;
     private int lunchesBought;
     private double totalSpent;
+    private boolean isFirstAdd = false;
     private static int studentCount = 0; 
     private static int idPrev = 999;
 
@@ -11,8 +12,10 @@ public class LunchAccount {
     //choose item/buy
 
     public LunchAccount(double balance) {
-        this.id = ++idPrev;
-        studentCount++;
+        lunchesBought = 0;
+        totalSpent = 0;
+        this.balance = 0;
+        id = ++idPrev;
         addBalance(balance);
     }
 
@@ -21,8 +24,14 @@ public class LunchAccount {
     }
 
     public void addBalance(double balance) {
-        this.balance += balance;
-        if(studentCount <= 100 && balance > 0) this.balance += 20;
+        if(balance > 0){
+            if(!isFirstAdd){
+                studentCount++;
+                this.isFirstAdd = true;
+                if(studentCount <= 100)  this.balance += 20;
+            }
+            this.balance += balance;
+        }
     }
 
     public boolean buyLunch(double cost){
