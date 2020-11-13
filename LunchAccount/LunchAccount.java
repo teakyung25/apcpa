@@ -35,7 +35,7 @@ public class LunchAccount {
     }
 
     public boolean buyLunch(double cost){
-        if(balance > cost) {
+        if(balance > cost && cost > 0) {
             balance -= cost;
             totalSpent += cost;
             lunchesBought++;

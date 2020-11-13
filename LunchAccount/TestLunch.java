@@ -7,7 +7,8 @@ public class TestLunch {
         //adding balance
         student1.addBalance(10);
         System.out.println(student1.getBalance());
-        student1.buyLunch(20);
+        //checks if purchase was good
+        verifyPurchase(student1.buyLunch(20));
         //Printing object
         System.out.println(student1);
 
@@ -16,7 +17,7 @@ public class TestLunch {
         System.out.println(student2.getBalance());
         student1.addBalance(100);
         System.out.println(student2.getBalance());
-        student1.buyLunch(100);
+        verifyPurchase(student1.buyLunch(-100));
 
         System.out.println(student2);
 
@@ -29,5 +30,14 @@ public class TestLunch {
         //should have 10 not 30 as the promotion end after 100 students 
         LunchAccount student = new LunchAccount(10);
         System.out.println(student);
+    }
+
+    public static void verifyPurchase(Boolean isGood){
+        if(isGood){
+            System.out.println("Your purchase was succesful!");
+
+        } else {
+            System.out.println("Your purchase was not succesful! Add more money or you added a negative value.");
+        }
     }
 }
