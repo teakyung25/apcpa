@@ -24,10 +24,10 @@ public class TestLunch {
         for(int i = 0; i < 98; i++){
             //should print 30 with 20 added
             LunchAccount student = new LunchAccount(10);
-            System.out.print(student);
+            System.out.println(student);
         }
         //should have 10 not 30 as the promotion end after 100 students 
         LunchAccount student = new LunchAccount(10);
-        System.out.print(student);
+        System.out.println(student);
     }
 }

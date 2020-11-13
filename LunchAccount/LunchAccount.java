@@ -12,9 +12,8 @@ public class LunchAccount {
 
     public LunchAccount(double balance) {
         this.id = ++idPrev;
-        this.balance = balance;
-        studentCount += 1;
-        if(studentCount <= 100 && balance > 0) this.balance += 20;
+        studentCount++;
+        addBalance(balance);
     }
 
     public double getBalance() {
@@ -23,21 +22,21 @@ public class LunchAccount {
 
     public void addBalance(double balance) {
         this.balance += balance;
+        if(studentCount <= 100 && balance > 0) this.balance += 20;
     }
 
-    public void buyLunch(double cost){
+    public boolean buyLunch(double cost){
         if(balance > cost) {
             balance -= cost;
             totalSpent += cost;
             lunchesBought++;
-            System.out.println("Purchase successful!");
-        } else {
-            System.out.println("Purchase not successful! Add more money to your account.");
-        }
+            return true;
+        } 
+        return false;    
     }
 
     public String toString(){
-        return "\nID: " + id  + "\nBalance: " + balance + "\nTotal Spent:" + totalSpent + "\nTotal Meals: " + lunchesBought;
+        return "ID: " + id  + "\nBalance: " + balance + "\nTotal Spent:" + totalSpent + "\nTotal Meals: " + lunchesBought;
     }
 
 }
