@@ -64,6 +64,12 @@ public class Character {
         this.name = name;
     }
 
+    //Formate Method
+
+    public String toFileFormat(){
+        return name + "," + characterType + "," + ranks[0] + "," + ranks[1] + "," + ranks[2] + "," + ranks[3] + "," + ranks[4];
+    }
+
     //Display Method
     public String displayRandCharacter(){
         return "Character Type: " + characterType + " Ranks: " + Arrays.toString(ranks);

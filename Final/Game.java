@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class Game {
     private ArrayList<Character> partyCharacters = new ArrayList<Character>();
@@ -42,8 +43,9 @@ public class Game {
                 System.out.println("You already have two " + userClass + " characters, enter different class.");
                 continue;
             }
-            System.out.println(partyCharacters);
+            System.out.println(partyCharacters + "\n\n");
         }
+        saveGame();
     }
 
     private boolean isValidParty(String userClass) {
@@ -69,9 +71,20 @@ public class Game {
         return characterClass;
     }
 
-
-
-    // private void saveGame(){
-        
-    // }
+    private void saveGame(){
+        System.out.print("Filename to save to (add extension): ");
+        String filename = input.next();
+        File newFile = new File(filename);
+        try{
+            PrintWriter fileReader = new PrintWriter(newFile);
+            for(int i = 0; i < partyCharacters.size()+1; i++) {
+                if(i == 0) {
+                    fileReader.println(name);
+                } else {
+                    fileReader.println(partyCharacters.get(i-1).toFileFormat());
+                }
+            }
+            fileReader.close();
+        } catch (IOException e) {}
+    }
 }
