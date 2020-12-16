@@ -1,0 +1,5 @@
+bob,Mage,4,6,6,10,4,3,3
+d,Cleric,6,5,10,4,4,3
+my guy,Cleric,4,5,9,6,6,3
+booi,,Courtier,5,5,3,6,10
+booi,9,Courtier,5,5,3,6,10

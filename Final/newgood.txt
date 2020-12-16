@@ -1,0 +1,5 @@
+hi
+hi,Mage,1,6,3,7,4
+d,Mage,1,6,3,9,2
+i,Courtier,4,3,1,5,8
+hi,Courtier,3,4,4,4,8

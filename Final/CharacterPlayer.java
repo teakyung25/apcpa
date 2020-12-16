@@ -1,19 +1,19 @@
 import java.util.*;
 
-public class Character {
+public class CharacterPlayer {
     private String name;
     private String characterType;
     private String[] characters = {"Knight","Peasant","Cleric","Mage","Courtier"};
     private int[] ranks = new int[5];
 
 
-    public Character(String name, String characterType, int[] ranks) {
+    public CharacterPlayer(String name, String characterType, int[] ranks) {
         this.name = name;
         this.characterType = characterType;
         this.ranks = ranks;
     }
 
-    public Character (String characterType) {
+    public CharacterPlayer (String characterType) {
         this.characterType = characterType;
         this.ranks = randomRanks(Arrays.asList(characters).indexOf(characterType));
     }
@@ -31,7 +31,7 @@ public class Character {
                     rankTemp[i] = (1 + (int)(Math.random() * ((6-1)+1)) );
                 }
             }
-            isValid = isValidSocre(rankTemp);
+            isValid = !isValidSocre(rankTemp);
             // System.out.println(Arrays.toString(rankTemp));
         }
         return rankTemp;
