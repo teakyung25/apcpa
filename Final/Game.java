@@ -11,6 +11,10 @@ public class Game {
         this.name = name;
     }
 
+
+    //**Central Functions called on GameRun file**
+
+    //Creating a New Game!
     public void createNewGame() {
         // boolean isGood = isValidParty();
         int i = 1;
@@ -48,6 +52,56 @@ public class Game {
         saveGame();
     }
 
+    //Validating a Saved File
+    public void validateFile(){
+        System.out.print("Filename to check (add extension): ");
+        String filename = input.next();
+        File newFile = new File(filename);
+        int i = 0;
+        try{
+            Scanner input = new Scanner(newFile);
+            while(input.hasNextLine()){
+                if(i == 0) {
+                    this.name = input.nextLine();
+                } else {
+                    try{
+                        this.partyCharacters.add(parseCharacter(input.nextLine()));
+                    } catch(Exception e) {
+                        System.out.println("Your characters are formated incorrectly!");
+                    }
+                }
+                i++;
+            }
+            input.close();
+        } catch(IOException e){}
+        i--;
+        if(i > 4 || i < 4){
+            System.out.println("You have " + (i) + " # of characters, which is " + (i-4) + " over or under the required amount four!" );
+        } 
+        for(Character c : partyCharacters) {
+            if(c.isValidSocre(c.getRanks())) {
+                System.out.println("Sorry the scores of your characters are not inbound.");
+            }
+            if(isValidParty(c.getCharacterType())){
+                System.out.println("Sorry the scores of your characters are not inbound.");
+                break;
+            }
+        }
+    }
+
+    private Character parseCharacter(String stringCharacter){
+        String[] data = stringCharacter.split(",");
+        int[] score = new int[5];
+        for(int i = 2; i < 7; i++){
+            score[i-2] = Integer.parseInt(data[i]);
+        }
+        return new Character(data[0],data[1],score);
+    }
+
+
+    //**Support functions to the central functions**
+    
+    //Check to see if the frequency of the given class
     private boolean isValidParty(String userClass) {
         //Compiles the Character objects to a String list of classes 
         ArrayList<String> stringCharacters = new ArrayList<String>();
@@ -58,6 +112,7 @@ public class Game {
         return true;
     }
 
+    //Check to see if the user entered class matches the correct format 
     private String validCharacterInput() {
         System.out.println("Character Classes: " + Arrays.toString(character));
         String characterClass = "";
@@ -71,6 +126,7 @@ public class Game {
         return characterClass;
     }
 
+    //Save the Game 
     private void saveGame(){
         System.out.print("Filename to save to (add extension): ");
         String filename = input.next();

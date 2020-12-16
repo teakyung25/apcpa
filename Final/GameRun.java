@@ -8,6 +8,8 @@ public class GameRun {
         System.out.print("Name of Game: ");
         String title = input.nextLine();
         Game g1 = new Game(title);
-        g1.createNewGame();
+        // g1.createNewGame();
+        g1.validateFile();
+        input.close();
     }
 }

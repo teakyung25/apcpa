@@ -37,7 +37,7 @@ public class Character {
         return rankTemp;
     }
 
-    private boolean isValidSocre(int[] jacksArray) {
+    public boolean isValidSocre(int[] jacksArray) {
         int sum = 0;
         for(int i : jacksArray) sum += i;
         // System.out.println(sum);
