@@ -1,12 +1,15 @@
-import java.lang.reflect.Array;
+
 import java.util.*;
 
 public class A0 {
     public static void main(String [] args) {
-        // ArrayList<String> fruits = (ArrayList<String>) Arrays.asList("apples","watermelon","melon","orange","pineapples","banana","blood orange","lychee","kiwi","pear");
-        // ArrayList<String> fruits2 = (ArrayList<String>) Arrays.asList("bapples","watermelon","melon","orange","pineapples","banana","coconut","lychee","kiwi","pear");
+        ArrayList<String> veg = new ArrayList<>(Arrays.asList("cabbage","carrot","onion","green onions","avocado","garlic","bell pepper","pepper","leeks","tomato"));
+        ArrayList<String> fruits = new ArrayList<>(Arrays.asList("apples","watermelon","melon","orange","pineapples","banana","blood orange","lychee","kiwi","pear"));
+        ArrayList<String> fruits2 = new ArrayList<>(Arrays.asList("bapples","watermelon","melon","orange","pineapples","banana","coconut","lychee","kiwi","pear"));
         ArrayList<String> animals = new ArrayList<>(Arrays.asList("Shark","Bird","Shark","Fish","Chicken","Horse","Cat","Dog","Whale","Fox"));
         ArrayList<Integer> nums = new ArrayList<>(Arrays.asList(0,1,2,3,4,5));
+        System.out.println(foodList(fruits,veg));
+        System.out.println(duplicateFood(fruits, fruits2));
         System.out.println(duplicateAnimals(animals));
         System.out.println(addNum(nums,3));
         System.out.println(reverseOrder(nums));
@@ -18,9 +21,7 @@ public class A0 {
 
     }
 
-    public static ArrayList<String> foodList() {
-        ArrayList<String> fruits = (ArrayList<String>) Arrays.asList("apples","watermelon","melon","orange","pineapples","banana","blood orange","lychee","kiwi","pear");
-        ArrayList<String> veg = (ArrayList<String>) Arrays.asList("cabbage","carrot","onion","green onions","avocado","garlic","bell pepper","pepper","leeks","");
+    public static ArrayList<String> foodList(ArrayList<String> fruits, ArrayList<String> veg) {
         ArrayList<String> combination = new ArrayList<String>(fruits);
         combination.addAll(veg);
         Collections.sort(combination);
