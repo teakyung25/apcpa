@@ -1,6 +1,3 @@
-import src.App;
-// import javax.swing.GroupLayout;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.GroupLayout.Alignment;
@@ -23,8 +20,9 @@ public class App extends JFrame {
     // Inheritance - use existing functionality, and add more - is a relationship 
 
     // Composition - use many objects together
-
-    private JLabel text;
+    private JPanel panel;
+    // private JLabel text;
+    private JTextArea text;
     private JButton negate,b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,bc,sqrt,add,subtract,multiply,divide,equals;
     private static ArrayList<String> functions = new ArrayList<String>(Arrays.asList("-","+","x","÷"));
     private boolean firstTime = true;
@@ -32,7 +30,7 @@ public class App extends JFrame {
     public static void main(String[] args) throws Exception {
             // System.out.println("io");
             App app = new App();
-            app.setVisible(true);
+            // app.setVisible(true);
     }
     
     public App() {
@@ -46,11 +44,25 @@ public class App extends JFrame {
         group1.setAutoCreateContainerGaps(true);
         myPanel.setLayout(group1);
 
-
-        text = new JLabel("", SwingConstants.CENTER);
-        text.setFont(new Font("Serif",Font.BOLD, 20));
-        text.setBounds(0,20,getBounds().width * 2,100);
-
+        panel = new JPanel();
+        panel.setLayout(null);
+        // add(panel);
+        // text = new JLabel("", SwingConstants.CENTER);
+        // text.setFont(new Font("Serif",Font.BOLD, 20));
+        // text.setBounds(0,20,getBounds().width * 2,100);
+        
+        text =new JTextArea("");  
+        text.setBounds(4,2,630, 30); 
+        text.setEditable(false);
+        text.setFocusable(false); 
+        frame.add(text);  
+        // frame.setSize(300,300);  
+        // f.setLayout(null);  
+        // f.setVisible(true);  
+        // frame.add(new JButton("932"));
+        // myPanel.add(panel);
+        // group1.createSequentialGroup()
+            // .addComponent(text);
         b1 = new JButton("1");
         b2 = new JButton("2");
         b3 = new JButton("3");
@@ -69,30 +81,41 @@ public class App extends JFrame {
         divide = new JButton("÷");
         equals = new JButton("=");
         negate = new JButton("+/-");
+        // negate.setPreferredSize(new Dimension(200, 100));
 
         ArrayList<JButton> buttons = new ArrayList<>(Arrays.asList(b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,sqrt,divide,multiply,add,subtract));
 
-        group1.setHorizontalGroup(group1.createSequentialGroup()
+        group1.setHorizontalGroup(group1.createParallelGroup()
             .addComponent(text)
-            .addGroup(group1.createParallelGroup(Alignment.LEADING).addComponent(b1).addComponent(b4).addComponent(b7).addComponent(b0))
-            .addGroup(group1.createParallelGroup().addComponent(b2).addComponent(b5).addComponent(b8).addComponent(sqrt))
-            .addGroup(group1.createParallelGroup().addComponent(negate).addComponent(b3).addComponent(b6).addComponent(b9).addComponent(bc))
-            .addGroup(group1.createParallelGroup().addComponent(divide).addComponent(multiply).addComponent(add).addComponent(subtract).addComponent(equals)));
+            .addGroup(group1.createSequentialGroup()
+                .addGroup(group1.createParallelGroup().addComponent(b1).addComponent(b4).addComponent(b7).addComponent(b0))
+                .addGroup(group1.createParallelGroup().addComponent(b2).addComponent(b5).addComponent(b8).addComponent(sqrt))
+                .addGroup(group1.createParallelGroup().addComponent(negate).addComponent(b3).addComponent(b6).addComponent(b9).addComponent(bc))
+                .addGroup(group1.createParallelGroup().addComponent(divide).addComponent(multiply).addComponent(add).addComponent(subtract).addComponent(equals))));
             // .addGroup(group1.createParallelGroup(Alignment.TRAILING).addComponent(b3).addComponent(b5)));
 
 
         group1.setVerticalGroup(group1.createSequentialGroup()
-            .addGroup(group1.createParallelGroup(Alignment.BASELINE).addComponent(text).addComponent(negate).addComponent(divide))
-            .addGroup(group1.createParallelGroup(Alignment.BASELINE).addComponent(b1).addComponent(b2).addComponent(b3).addComponent(multiply))
-            .addGroup(group1.createParallelGroup(Alignment.BASELINE).addComponent(b4).addComponent(b5).addComponent(b6).addComponent(add))
-            .addGroup(group1.createParallelGroup(Alignment.BASELINE).addComponent(b7).addComponent(b8).addComponent(b9).addComponent(subtract))
-            .addGroup(group1.createParallelGroup().addComponent(b0).addComponent(sqrt).addComponent(bc).addComponent(equals)));
+            .addComponent(text)
+            // .addGroup(group1.createParallelGroup(Alignment.LEADING).addComponent(text))
+            .addGroup(group1.createSequentialGroup()
+                    .addGroup(group1.createParallelGroup().addComponent(negate).addComponent(divide))
+                    .addGroup(group1.createParallelGroup().addComponent(b1).addComponent(b2).addComponent(b3).addComponent(multiply))
+                    .addGroup(group1.createParallelGroup().addComponent(b4).addComponent(b5).addComponent(b6).addComponent(add))
+                    .addGroup(group1.createParallelGroup().addComponent(b7).addComponent(b8).addComponent(b9).addComponent(subtract))
+                    .addGroup(group1.createParallelGroup().addComponent(b0).addComponent(sqrt).addComponent(bc).addComponent(equals))));
 
         frame.pack();
         frame.setVisible(true);
 
         for(int i = 0; i < buttons.size(); i++) {
             final Integer innerMi = new Integer(i);
+            buttons.get(i).setBorderPainted(false);
+            buttons.get(i).setFocusPainted(false);
+            // buttons.get(i).setContentAreaFilled(false);
+            buttons.get(i).setBackground(Color.BLACK);
+            buttons.get(i).setForeground(Color.WHITE);
+            buttons.get(i).setMargin(new Insets(10,20,10,20));
             buttons.get(i).addActionListener(new ActionListener() {
                 @Override
 
@@ -123,29 +146,34 @@ public class App extends JFrame {
             });
         }
 
-        equals.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e){ 
-                firstTime = false;
+        equals.setMargin(new Insets(10,20,10,20));
+        bc.setMargin(new Insets(10,20,10,20));
+        sqrt.setMargin(new Insets(10,18,10,18));
+        negate.setMargin(new Insets(10,16,10,16));
+        subtract.setMargin(new Insets(10,21,10,21));
 
+        ArrayList<JButton> lonely_btn = new ArrayList<JButton>(Arrays.asList(equals,bc,sqrt,negate));
+
+        for(JButton btn : lonely_btn) {
+            btn.setBorderPainted(false);
+            btn.setFocusPainted(false);
+            // buttons.get(i).setContentAreaFilled(false);
+            btn.setBackground(Color.BLACK);
+            btn.setForeground(Color.WHITE);
+        }
+        equals.addActionListener((event)-> {
+                firstTime = false;
                 text.setText(Double.toString(parseSolve(text.getText())));
-            }
         });
-        bc.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e){ 
+        bc.addActionListener((event)-> {
                 firstTime = true;
                 text.setText("");
-            }
         });
 
-        sqrt.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e){ 
+        sqrt.addActionListener((event)-> {
                 firstTime = false;
 
                 text.setText(Double.toString(Math.sqrt(parseSolve(text.getText()))));
-            }
         });
 
         negate.addActionListener((event)-> {
